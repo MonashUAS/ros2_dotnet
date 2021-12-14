@@ -1,0 +1,13 @@
+1. Create the map with dimensions, with obstacles
+2. Set goal states for each drone
+3. Start listening for start states; input: a packet of start states for each drone
+	3a. Store start states in an array of packets (objects)... [{{a_i, state}, {a_j, state}, {a_k, state}}, ..]
+
+4. For each agent, call path planning algo for their respective start states
+
+Drone drifting fix:
+- use negative feedback to tell the drone to go back to its path, using IP positions
+
+
+5. Publish
+ 
