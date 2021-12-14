@@ -268,9 +268,9 @@ namespace GirbalPathfinding
             //obsticle generation methods start here 
             int[,] obsticleBase = new int[mapWidth, mapHeight];
 
-            for (int i = 1; i < mapWidth - 1; i+= obsticleMethods)
+            for (int i = 1; i < mapWidth - 1; i += obsticleMethods)
             {
-                for (int j = 0; j < mapHeight; j+= obsticleMethods)
+                for (int j = 0; j < mapHeight; j += obsticleMethods)
                 {
                     if (rand.Next() % obsticleChance == 1)
                     {
@@ -278,20 +278,21 @@ namespace GirbalPathfinding
                         var isObstacleInvalid = false;
 
                         if (!isObstacleInvalid)//can be removed in final build
-                        {  
-                            if (rand.Next() % obsticleRectangle == 1) {
+                        {
+                            if (rand.Next() % obsticleRectangle == 1)
+                            {
                                 //executiveController.staticObstacles.Add(new StaticObstacle(i, j));
-                                bottomCornerRectangleObsicle(i,j,3,2,obsticleBase,1);
+                                bottomCornerRectangleObsicle(i, j, 3, 2, obsticleBase, 1);
                             }
                             else if (rand.Next() % obsticleCircle == 1)
                             {
-                                centreCircleObsicle(i,j,4,obsticleBase);//centre
+                                centreCircleObsicle(i, j, 4, obsticleBase);//centre
                             }
                             else
                             {
-                                rightAngleTriangleCornerObsicle(i,j,2,2,1, obsticleBase);
+                                rightAngleTriangleCornerObsicle(i, j, 2, 2, 1, obsticleBase);
                             }
-                       }
+                        }
                         //for (int k = 0; k < noOfAgents; k++)
                         //{
                         //    //check if new obstacle collides with start/goal state
@@ -303,13 +304,13 @@ namespace GirbalPathfinding
                     }
                 }
             }
-            
+
             //new obsticle application and checking method 
             checkObsitcles(obsticleBase);
             applyObsicles(obsticleBase);
 
-           
-            
+
+
 
 
 
@@ -408,14 +409,14 @@ namespace GirbalPathfinding
         // these methods consider up and right to be positive
 
         //bottom left method
-        private void bottomCornerRectangleObsicle(int posRectangle1, int posRectangle2, int width, int hieght, int[,] arrayIn,int filler)
+        private void bottomCornerRectangleObsicle(int posRectangle1, int posRectangle2, int width, int hieght, int[,] arrayIn, int filler)
         {
             for (int i = posRectangle1; i <= posRectangle1 + width; i++)
             {
                 for (int j = posRectangle2; j < posRectangle2 + hieght; j++)
                 { //select all points in area
                     //executiveController.staticObstacles.Add(new StaticObstacle(i, j));
-                    if (i < mapWidth && j < mapHeight && filler ==1)
+                    if (i < mapWidth && j < mapHeight && filler == 1)
                     {
                         arrayIn[i, j] = 1;
                     }
@@ -429,16 +430,16 @@ namespace GirbalPathfinding
 
         //create circle from centre
         //used x^2+y^2=r^2
-        private void centreCircleObsicle(int posCircle1,int posCircle2, int radius, int[,] arrayIn)
+        private void centreCircleObsicle(int posCircle1, int posCircle2, int radius, int[,] arrayIn)
         {
-            int square = (int) Math.Pow(radius, 2);
+            int square = (int)Math.Pow(radius, 2);
             for (int i = -radius; i <= radius; i++)
             { // 
-                int k = (int) Math.Round(Math.Sqrt(square - Math.Pow(i, 2))); //determine height of collumn
+                int k = (int)Math.Round(Math.Sqrt(square - Math.Pow(i, 2))); //determine height of collumn
                 for (int j = -k; j <= k; j++)
                 {
                     //executiveController.staticObstacles.Add(new StaticObstacle(posCircle1 + i, posCircle2 + j));
-                    if (posCircle1 + i < mapWidth && posCircle1 +i >=0 && posCircle2 + j < mapHeight && posCircle2+j >=0)
+                    if (posCircle1 + i < mapWidth && posCircle1 + i >= 0 && posCircle2 + j < mapHeight && posCircle2 + j >= 0)
                     {
                         arrayIn[posCircle1 + i, posCircle2 + j] = 1;
                     }
@@ -447,7 +448,7 @@ namespace GirbalPathfinding
         }
 
         //1 is bottom left corner, 2 is bottom right corner, 3 is top right corner, 4 is top left corner
-        private void rightAngleTriangleCornerObsicle(int corner1,int corner2,int width, int height,int edgeQuad, int[,] arrayIn)
+        private void rightAngleTriangleCornerObsicle(int corner1, int corner2, int width, int height, int edgeQuad, int[,] arrayIn)
         {
             float gradiant = height / width;
             if (edgeQuad == 1)
@@ -456,10 +457,11 @@ namespace GirbalPathfinding
                 {
                     for (int j = 0; j < height - Math.Round(i * gradiant); j++)
                     {
-                        if (corner1 + i < mapWidth && corner2 + j < mapHeight) { 
+                        if (corner1 + i < mapWidth && corner2 + j < mapHeight)
+                        {
                             //executiveController.staticObstacles.Add(new StaticObstacle(corner1 + i, corner2 + j));
                             arrayIn[corner1 + i, corner2 + j] = 1;
-                            }
+                        }
                     }
                 }
             }
@@ -519,7 +521,7 @@ namespace GirbalPathfinding
                         //check if new obstacle collides with start/goal state
                         if (newObstacle.positionEqual(executiveController.map.startStates[k], true) || newObstacle.positionEqual(executiveController.map.goalStates[k], true))
                         {
-                            bottomCornerRectangleObsicle(i - Globals.droneRadius, j - Globals.droneRadius, 1+2*Globals.droneRadius, 1+2*Globals.droneRadius, arrayIn, 0);
+                            bottomCornerRectangleObsicle(i - Globals.droneRadius, j - Globals.droneRadius, 1 + 2 * Globals.droneRadius, 1 + 2 * Globals.droneRadius, arrayIn, 0);
                         }
                     }
                 }
