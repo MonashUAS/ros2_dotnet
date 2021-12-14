@@ -15,11 +15,38 @@ find_package(dotnet_cmake_module REQUIRED)
 set(CSHARP_TARGET_FRAMEWORK "netcoreapp2.0")
 find_package(DotNETExtra REQUIRED)
 
+find_package(catkin REQUIRED COMPONENTS
+   roscpp
+   rospy
+   std_msgs
+   message_generation
+)
+
+catkin_package(
+  ...
+  CATKIN_DEPENDS message_runtime ...
+  ...)
+
 set(_assemblies_dep_dlls
     ${rcldotnet_common_ASSEMBLIES_DLL}
     ${rcldotnet_ASSEMBLIES_DLL}
     ${std_msgs_ASSEMBLIES_DLL}
     ${rcldotnet_ASSEMBLIES_DLL}
+)
+
+
+add_message_files(
+    FILES
+    State.msg
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+
+set(msg_files
+    ${msg/State.msg}
 )
 
 message("Included assemblies: ${_assemblies_dep_dlls}")

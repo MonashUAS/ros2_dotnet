@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
+//test
+
 namespace GirbalPathfinding
 {
     public class AStar : IPathPlannable //changed from internal to public
