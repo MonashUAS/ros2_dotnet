@@ -12,17 +12,17 @@ namespace GirbalPathfinding
 
         private ExecutiveController executiveController;
 
-        private const int mapWidth = 100;
-        private const int mapHeight = 50;
-        private const int noOfAgents = 2;
+        private const int mapWidth = 60;
+        private const int mapHeight = 20;
+        private const int noOfAgents = 1;
 
 
         private List<State> startStates = new List<State>()
         {
-            new State() { x = 10, y = 8},
-            new State() {x = 22, y = 8},
-            new State() {x = 40, y = 30 },
-            new State() {x = 20, y = 5 }
+            new State() { x = 15, y = 10},
+            new State() { x = 0, y = 25},
+            new State() {x = 40, y = 25 },
+            new State() {x = 15, y = 40 }
 
         };
 
@@ -39,9 +39,9 @@ namespace GirbalPathfinding
 
         //OBSTICLE VALUES
         public int obsticleMethods = 2; //step size for obsicle gernerator
-        public int obsticleChance = 95; //% chance a space may be empty
+        public int obsticleChance = 30; //% chance a space may be empty
         public int obsticleRectangle = 50; //% chance a space will not contain a rectange if an obsticle is declared
-        public int obsticleCircle = 30;  //% chance a space will not contain a circle if an obsticle is declared
+        public int obsticleCircle = 50;  //% chance a space will not contain a circle if an obsticle is declared
 
 
         //SETUP SYSTEM
@@ -104,6 +104,166 @@ namespace GirbalPathfinding
             //        }
             //    }
             //}
+
+
+
+            int[] x = new int[]
+            {
+    10,
+    11,
+    11,
+    12,
+    13,
+    14,
+    15,
+    15,
+    16,
+    4,
+    5,
+    17,
+    5,
+    6,
+    18,
+    19,
+    6,
+    7,
+    19,
+    20,
+    7,
+    8,
+    20,
+    21,
+    22,
+    8,
+    9,
+    10,
+    21,
+    22,
+    23,
+    10,
+    11,
+    23,
+    24,
+    25,
+    12,
+    13,
+    25,
+    26,
+    27,
+    13,
+    14,
+    15,
+    27,
+    28,
+    29,
+    16,
+    17,
+    18,
+    29,
+    30,
+    16,
+    18,
+    19,
+    17,
+    19,
+    20,
+    18,
+    20,
+    21,
+    19,
+    20,
+    21,
+    21,
+    22,
+    22
+            };
+
+            int[] y = new int[] {
+    1,
+    1,
+    2,
+    2,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5,
+    5,
+    5,
+    6,
+    6,
+    6,
+    6,
+    7,
+    7,
+    7,
+    7,
+    8,
+    8,
+    8,
+    8,
+    8,
+    9,
+    9,
+    9,
+    9,
+    9,
+    9,
+    10,
+    10,
+    10,
+    10,
+    10,
+    11,
+    11,
+    11,
+    11,
+    11,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    13,
+    13,
+    13,
+    13,
+    13,
+    14,
+    14,
+    14,
+    15,
+    15,
+    15,
+    16,
+    16,
+    16,
+    17,
+    17,
+    17,
+    18,
+    18,
+    19
+};
+
+
+            for (int i = 0; i < x.Length; i++)
+            {
+                executiveController.staticObstacles.Add(new StaticObstacle(x[i], y[i]));
+            }
+
+
+
+
+
+
+
+
+
+
+
 
             //obsticle generation methods start here 
             int[,] obsticleBase = new int[mapWidth, mapHeight];

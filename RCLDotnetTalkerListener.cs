@@ -5,7 +5,7 @@ using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Threading;
 using ROS2;
-using ROS2.Utils;
+using ROS2.Interfaces;
 
 namespace GirbalPathfinding
 {
@@ -46,7 +46,7 @@ namespace GirbalPathfinding
         public void PublishPaths(paths) //how to define msg type?
         {
             //Publish a list of paths
-
+           
             List<girbal_pathfinding.msg.State> msg = new List<girbal_pathfinding.msg.State>();
 
             msg.Data = paths; //path;
@@ -54,7 +54,7 @@ namespace GirbalPathfinding
             publisher.Publish(msg);
         }
 
-        public void SubscriberCallback(msg) //what type do we give this?
+        public void SubscriberCallback(IMessage msg) //what type do we give this?
         {
             State incomingState = new State() {x = msg.x, y = msg.y, time = msg.time };
 
