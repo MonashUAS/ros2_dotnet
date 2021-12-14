@@ -29,5 +29,5 @@ repositories:
     version: master
   ros2_dotnet/ros2_dotnet:
     type: git
-    url: https://github.com/ros2-dotnet/ros2_dotnet.git
+    url: https://github.com/MonashUAS/ros2_dotnet.git
     version: master
