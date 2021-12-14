@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.ComponentModel;
 
 using ROS2;
 using ROS2.Utils;
@@ -14,16 +15,22 @@ namespace ConsoleApplication {
 
       INode node = RCLdotnet.CreateNode ("talker");
 
-      IPublisher<std_msgs.msg.String> chatter_pub = node.CreatePublisher<std_msgs.msg.String> ("chatter");
+      IPublisher<girbal_msgs.msg.State> chatter_pub = node.CreatePublisher<girbal_msgs.msg.State> ("chatter");
 
-      std_msgs.msg.String msg = new std_msgs.msg.String ();
+      girbal_msgs.msg.State msg = new girbal_msgs.msg.State ();
 
       int i = 1;
 
       while (RCLdotnet.Ok ()) {
-        msg.Data = "Hello World: " + i;
+        foreach(PropertyDescriptor descriptor in TypeDescriptor.GetProperties(msg))
+          {
+              string name = descriptor.Name;
+              object value = descriptor.GetValue(msg);
+              Console.WriteLine("{0}={1}", name, value);
+          }
+        msg.X = i;
         i++;
-        Console.WriteLine ("Publishing: \"" + msg.Data + "\"");
+        Console.WriteLine ("Publishing: \"" + msg.X + "\"");
         chatter_pub.Publish (msg);
 
         // Sleep a little bit between each message
