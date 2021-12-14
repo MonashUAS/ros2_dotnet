@@ -93,7 +93,7 @@ Assuming ROS2 eloquent installed to the standard location, run the following com
 source /opt/ros/eloquent/setup.bash
 mkdir -p ~/ros2_dotnet_ws/src
 cd ~/ros2_dotnet_ws
-wget https://raw.githubusercontent.com/ros2-dotnet/ros2_dotnet/master/ros2_dotnet.repos
+wget https://raw.githubusercontent.com/MonashUAS/ros2_dotnet/Foxy/ros2_dotnet.repos
 vcs import ~/ros2_dotnet_ws/src < ros2_dotnet.repos
 colcon build
 ```
