@@ -12,7 +12,7 @@ namespace GirbalPathfinding
     public class RCLDotnetTalkerListener
     {
 
-        private ExecutiveController executiveController = new ExecutiveController(300, Globals.noOfAgents, Globals.mapWidth, Globals.mapHeight);
+        //private ExecutiveController executiveController = new ExecutiveController(300, Globals.noOfAgents, Globals.mapWidth, Globals.mapHeight);
 
         //I'm defining the publisher outside of Main to be able to access it inside of PublishPaths().. is this the correct way to do it?
         IPublisher<girbal_msgs.msg.StateArray> publisher;
