@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>girbal_pathfinding</name>
   <version>0.0.0</version>
   <description>Package containing examples of how to use the rcldotnet API.</description>
