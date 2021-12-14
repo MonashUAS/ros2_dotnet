@@ -56,7 +56,7 @@ namespace GirbalPathfinding
 
         public void SubscriberCallback(girbal_msgs.msg.StateArray msg) //what type do we give this?
         {
-            foreach (girbal_msgs.msg.State state in msg.States)
+            foreach (girbal_msgs.msg.State state in msg.states)
             {
                 Console.WriteLine(state);
             }
