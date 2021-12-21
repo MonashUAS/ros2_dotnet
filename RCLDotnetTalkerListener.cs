@@ -38,9 +38,9 @@ namespace GirbalPathfinding
 
             INode node_sub = RCLdotnet.CreateNode("subscriber");
 
-            //use State.msg type
+            //use StateArray.msg type
             ISubscription<girbal_msgs.msg.StateArray> chatter_sub = node_sub.CreateSubscription<girbal_msgs.msg.StateArray>(
-              "current_positions", msg => SubscriberCallback(msg.States));
+              "current_positions", msg => SubscriberCallback(msg));
 
             RCLdotnet.Spin(node_sub);
         }
