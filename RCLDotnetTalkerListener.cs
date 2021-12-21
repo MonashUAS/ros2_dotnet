@@ -58,9 +58,9 @@ namespace GirbalPathfinding
 
         public void SubscriberCallback(girbal_msgs.msg.StateArray msg) //what type do we give this?
         {
-            foreach (girbal_msgs.msg.State state in msg.States)
+            foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(msg))
             {
-                Console.WriteLine(state);
+                Console.WriteLine(descriptor);
             }
             // State incomingState = new State() { x = msg.X, y = msg.Y, time = msg.Time };
             // msg.States[0]
