@@ -25,7 +25,7 @@ namespace GirbalPathfinding
             //-------Publisher------
 
             INode node_pub = RCLdotnet.CreateNode("publisher");
-            IPublisher publisher = node_pub.CreatePublisher<girbal_msgs.msg.StateArray>("paths");
+            IPublisher<girbal_msgs.msg.StateArray> publisher = node_pub.CreatePublisher<girbal_msgs.msg.StateArray>("paths");
 
 
             //-------Subscriber------
