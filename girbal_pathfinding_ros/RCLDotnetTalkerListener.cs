@@ -4,8 +4,10 @@ using System.Reflection;
 using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.ComponentModel;
 using ROS2;
 using ROS2.Interfaces;
+using ROS2.Utils;
 
 namespace GirbalPathfinding
 {
@@ -56,7 +58,7 @@ namespace GirbalPathfinding
 
         public void SubscriberCallback(girbal_msgs.msg.StateArray msg) //what type do we give this?
         {
-            foreach (girbal_msgs.msg.State state in msg.states)
+            foreach (girbal_msgs.msg.State state in msg.States)
             {
                 Console.WriteLine(state);
             }
