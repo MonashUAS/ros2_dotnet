@@ -51,7 +51,7 @@ namespace GirbalPathfinding
             //publisher.Publish(msg);
         }
 
-        public void SubscriberCallback(girbal_msgs.msg.StateArray msg) //what type do we give this?
+        public static void SubscriberCallback(girbal_msgs.msg.StateArray msg) //what type do we give this?
         {
             foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(msg))
             {
