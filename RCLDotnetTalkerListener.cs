@@ -49,11 +49,11 @@ namespace GirbalPathfinding
         {
             //Publish a list of paths
 
-            List<girbal_msgs.msg.StateArray> msg = new List<girbal_msgs.msg.StateArray>();
+            //List<girbal_msgs.msg.StateArray> msg = new List<girbal_msgs.msg.StateArray>();
 
-            msg.Data = paths; //path;
+            //msg.Data = paths; //path;
 
-            publisher.Publish(msg);
+            //publisher.Publish(msg);
         }
 
         public void SubscriberCallback(girbal_msgs.msg.StateArray msg) //what type do we give this?
