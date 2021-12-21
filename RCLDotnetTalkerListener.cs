@@ -18,8 +18,6 @@ namespace GirbalPathfinding
 
         //I'm defining the publisher outside of Main to be able to access it inside of PublishPaths().. is this the correct way to do it?
         IPublisher<girbal_msgs.msg.StateArray> publisher;
-        INode node_pub;
-
 
         //need to also input obstacle positions --> do this in Globals?
 
@@ -29,7 +27,7 @@ namespace GirbalPathfinding
 
             //-------Publisher------
 
-            node_pub = RCLdotnet.CreateNode("publisher");
+            INode node_pub = RCLdotnet.CreateNode("publisher");
             publisher = node_pub.CreatePublisher<girbal_msgs.msg.StateArray>("paths");
 
 
