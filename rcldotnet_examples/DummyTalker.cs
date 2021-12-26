@@ -8,6 +8,8 @@ using System.ComponentModel;
 using ROS2;
 using ROS2.Utils;
 
+
+/* This Talker is intened to act as a tester as the thread network is likely not going to be completely ready  for testing*/ 
 namespace ConsoleApplication { //namespace needs changing right 
   public class RCLDotnetTalker {
     public static void Main (string[] args) {
@@ -15,24 +17,23 @@ namespace ConsoleApplication { //namespace needs changing right
 
       INode node = RCLdotnet.CreateNode ("talker");
 
-      IPublisher<girbal_msgs.msg.State> chatter_pub = node.CreatePublisher<girbal_msgs.msg.State> ("chatter"); 
-            //will this need to be on a different chanel as to prevent it revicing its own data?
+      IPublisher<girbal_msgs.msg.StateArray> chatter_pub = node.CreatePublisher<girbal_msgs.msg.StateArray> ("chatter");
 
-      girbal_msgs.msg.State msg = new girbal_msgs.msg.State ();
+      girbal_msgs.msg.StateArray msg = new girbal_msgs.msg.StateArray (); //create the data 
 
       int i = 1;
 
       while (RCLdotnet.Ok ()) {
         foreach(PropertyDescriptor descriptor in TypeDescriptor.GetProperties(msg))
           {
-              string name = descriptor.Name;
+              string name = descriptor.Name; //what does this do?
               object value = descriptor.GetValue(msg);
-              Console.WriteLine("{0}={1}", name, value);
+              Console.WriteLine("{0}={1}", name, value); //not needed?
           }
-        msg.X = i;
+        msg.X = i; //raw data needs to be entered here 
         i++;
         Console.WriteLine ("Publishing: \"" + msg.X + "\"");
-        chatter_pub.Publish (msg);
+        chatter_pub.Publish (msg); //publishing here
 
         // Sleep a little bit between each message
         Thread.Sleep (1000);
