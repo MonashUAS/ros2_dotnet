@@ -8,35 +8,38 @@ using System.ComponentModel;
 using ROS2;
 using ROS2.Utils;
 
-namespace ConsoleApplication { //namespace needs changing right 
-  public class RCLDotnetTalker {
-    public static void Main (string[] args) {
-      RCLdotnet.Init ();
+namespace ConsoleApplication
+{
+    public class RCLDotnetTalker
+    {
+        public static void Main(string[] args)
+        {
+            RCLdotnet.Init();
 
-      INode node = RCLdotnet.CreateNode ("talker");
+            INode node = RCLdotnet.CreateNode("talker");
 
-      IPublisher<girbal_msgs.msg.State> chatter_pub = node.CreatePublisher<girbal_msgs.msg.State> ("chatter"); 
-            //will this need to be on a different chanel as to prevent it revicing its own data?
+            IPublisher<girbal_msgs.msg.State> chatter_pub = node.CreatePublisher<girbal_msgs.msg.State>("chatter");
 
-      girbal_msgs.msg.State msg = new girbal_msgs.msg.State ();
+            girbal_msgs.msg.State msg = new girbal_msgs.msg.State();
 
-      int i = 1;
+            int i = 1;
 
-      while (RCLdotnet.Ok ()) {
-        foreach(PropertyDescriptor descriptor in TypeDescriptor.GetProperties(msg))
-          {
-              string name = descriptor.Name;
-              object value = descriptor.GetValue(msg);
-              Console.WriteLine("{0}={1}", name, value);
-          }
-        msg.X = i;
-        i++;
-        Console.WriteLine ("Publishing: \"" + msg.X + "\"");
-        chatter_pub.Publish (msg);
+            while (RCLdotnet.Ok())
+            {
+                foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(msg))
+                {
+                    string name = descriptor.Name;
+                    object value = descriptor.GetValue(msg);
+                    Console.WriteLine("{0}={1}", name, value);
+                }
+                msg.X = i;
+                i++;
+                Console.WriteLine("Publishing: \"" + msg.X + "\"");
+                chatter_pub.Publish(msg);
 
-        // Sleep a little bit between each message
-        Thread.Sleep (1000);
-      }
+                // Sleep a little bit between each message
+                Thread.Sleep(1000);
+            }
+        }
     }
-  }
 }

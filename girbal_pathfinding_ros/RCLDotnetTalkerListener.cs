@@ -4,8 +4,10 @@ using System.Reflection;
 using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.ComponentModel;
 using ROS2;
 using ROS2.Interfaces;
+using ROS2.Utils;
 
 namespace GirbalPathfinding
 {
@@ -13,11 +15,6 @@ namespace GirbalPathfinding
     {
 
         //private ExecutiveController executiveController = new ExecutiveController(300, Globals.noOfAgents, Globals.mapWidth, Globals.mapHeight);
-
-        //I'm defining the publisher outside of Main to be able to access it inside of PublishPaths().. is this the correct way to do it?
-        IPublisher<girbal_msgs.msg.StateArray> publisher;
-        INode node_pub;
-
 
         //need to also input obstacle positions --> do this in Globals?
 
@@ -27,8 +24,8 @@ namespace GirbalPathfinding
 
             //-------Publisher------
 
-            node_pub = RCLdotnet.CreateNode("publisher");
-            publisher = node_pub.CreatePublisher<girbal_msgs.msg.StateArray>("paths");
+            INode node_pub = RCLdotnet.CreateNode("publisher");
+            IPublisher<girbal_msgs.msg.StateArray> publisher = node_pub.CreatePublisher<girbal_msgs.msg.StateArray>("paths");
 
 
             //-------Subscriber------
@@ -36,9 +33,9 @@ namespace GirbalPathfinding
 
             INode node_sub = RCLdotnet.CreateNode("subscriber");
 
-            //use State.msg type
+            //use StateArray.msg type
             ISubscription<girbal_msgs.msg.StateArray> chatter_sub = node_sub.CreateSubscription<girbal_msgs.msg.StateArray>(
-              "current_positions", msg => SubscriberCallback(msg.States));
+              "current_positions", msg => SubscriberCallback(msg));
 
             RCLdotnet.Spin(node_sub);
         }
@@ -47,18 +44,18 @@ namespace GirbalPathfinding
         {
             //Publish a list of paths
 
-            List<girbal_msgs.msg.StateArray> msg = new List<girbal_msgs.msg.StateArray>();
+            //List<girbal_msgs.msg.StateArray> msg = new List<girbal_msgs.msg.StateArray>();
 
-            msg.Data = paths; //path;
+            //msg.Data = paths; //path;
 
-            publisher.Publish(msg);
+            //publisher.Publish(msg);
         }
 
-        public void SubscriberCallback(girbal_msgs.msg.StateArray msg) //what type do we give this?
+        public static void SubscriberCallback(girbal_msgs.msg.StateArray msg) //what type do we give this?
         {
-            foreach (girbal_msgs.msg.State state in msg.states)
+            foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(msg))
             {
-                Console.WriteLine(state);
+                Console.WriteLine(descriptor);
             }
             // State incomingState = new State() { x = msg.X, y = msg.Y, time = msg.Time };
             // msg.States[0]
