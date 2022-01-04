@@ -11,7 +11,7 @@ using ROS2.Utils;
 
 /* This Talker is intened to act as a tester as the thread network is likely not going to be completely ready  for testing*/ 
 namespace ConsoleApplication { //namespace needs changing right 
-  public class RCLDotnetTalker {
+  public class DummyTalker {
     public static void Main (string[] args) {
       RCLdotnet.Init ();
 
