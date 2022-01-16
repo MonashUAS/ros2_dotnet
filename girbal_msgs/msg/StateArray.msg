@@ -1,2 +1,2 @@
-girbal_msgs/State[] states
+int32[20] states
 int32 angry

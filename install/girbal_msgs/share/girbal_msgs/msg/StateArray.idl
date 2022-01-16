@@ -1,0 +1,14 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from girbal_msgs/msg/StateArray.msg
+// generated code does not contain a copyright notice
+
+
+module girbal_msgs {
+  module msg {
+    struct StateArray {
+      sequence<int32> states;
+
+      int32 angry;
+    };
+  };
+};
