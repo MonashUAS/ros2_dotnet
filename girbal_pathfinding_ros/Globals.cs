@@ -14,5 +14,9 @@ namespace GirbalPathfinding
         public const int mapHeight = 50;
         public static int noOfAgents = 4;
 
+        //should the inital drone locations be kept here ?
+        public State [] droneLocations = new  [] State(); 
+
+
     }
 }

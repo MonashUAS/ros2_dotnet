@@ -36,8 +36,13 @@ add_dotnet_executable(rcldotnet_listener
   INCLUDE_DLLS
   ${_assemblies_dep_dlls}
 )
+add_dotnet_executable(DummyTalker
+  DummyTalker.cs
+  INCLUDE_DLLS
+  ${_assemblies_dep_dlls}
 
 install_dotnet(rcldotnet_talker DESTINATION lib/${PROJECT_NAME}/dotnet)
 install_dotnet(rcldotnet_listener DESTINATION lib/${PROJECT_NAME}/dotnet)
+install_dotnet(DummyTalker DESTINATION lib/${PROJECT_NAME}/dotnet)
 
 ament_package()
