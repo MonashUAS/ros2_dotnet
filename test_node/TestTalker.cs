@@ -12,7 +12,7 @@ using ROS2.Interfaces;
 
 namespace ConsoleApplication
 {
-    public class RCLDotnetTalker
+    public class TestTalker
     {
         public static void Main(string[] args)
         {
@@ -24,6 +24,7 @@ namespace ConsoleApplication
 
             girbal_msgs.msg.StateArray msg = new girbal_msgs.msg.StateArray();
             msg.States = new List<int>();
+            msg.Number_of_drones = 5;
 
             List<int> droneIds = new List<int>();
             droneIds.Add(4731);
@@ -56,6 +57,7 @@ namespace ConsoleApplication
                     Console.WriteLine("{0}={1}", name, value);
                 }
                 j++;
+                //msg.States.ForEach(Console.WriteLine);
                 chatter_pub.Publish(msg);
 
                 // Sleep a little bit between each message

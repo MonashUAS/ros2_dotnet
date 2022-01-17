@@ -26,12 +26,19 @@ set(_assemblies_dep_dlls
 
 message("Included assemblies: ${_assemblies_dep_dlls}")
 
-add_dotnet_executable(rcldotnet_talker
-  RCLDotnetTalker.cs
+add_dotnet_executable(test_talker
+  TestTalker.cs
   INCLUDE_DLLS
   ${_assemblies_dep_dlls}
 )
 
-install_dotnet(rcldotnet_talker DESTINATION lib/${PROJECT_NAME}/dotnet)
+add_dotnet_executable(test_listener
+  TestListener.cs
+  INCLUDE_DLLS
+  ${_assemblies_dep_dlls}
+)
+
+install_dotnet(test_talker DESTINATION lib/${PROJECT_NAME}/dotnet)
+install_dotnet(test_listener DESTINATION lib/${PROJECT_NAME}/dotnet)
 
 ament_package()

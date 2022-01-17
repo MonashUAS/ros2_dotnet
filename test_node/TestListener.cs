@@ -10,7 +10,7 @@ using ROS2;
 
 namespace ConsoleApplication
 { //needs to be changed right 
-    public class RCLDotnetListener
+    public class TestListener
     {
         public static void Main(string[] args)
         {
@@ -26,14 +26,15 @@ namespace ConsoleApplication
 
         public static void ProccessData(girbal_msgs.msg.StateArray msg)
         {
+            int dronesLeft = msg.Number_of_drones;
             Console.WriteLine("Recieved new positions");
-            while (msg.StateArray.Count >= 4)
+            while (dronesLeft > 0)
             {
-                arrayLength = msg.StateArray.Count;
-                Console.WriteLine("DroneID: " + msg.StateArray[arrayLength - 1]);
-                Console.Writeline("x: " + msg.StateArray[arrayLength - 4]);
-                Console.Writeline("y: " + msg.StateArray[arrayLength - 3]);
-                Console.Writeline("t: " + msg.StateArray[arrayLength - 2]);
+                Console.WriteLine("DroneID: " + msg.States[dronesLeft * 4 - 1]);
+                Console.WriteLine("x: " + msg.States[dronesLeft * 4 - 4]);
+                Console.WriteLine("y: " + msg.States[dronesLeft * 4 - 3]);
+                Console.WriteLine("t: " + msg.States[dronesLeft * 4 - 2]);
+                dronesLeft--;
             }
         }
     }
