@@ -40,6 +40,7 @@ add_dotnet_executable(DummyTalker
   DummyTalker.cs
   INCLUDE_DLLS
   ${_assemblies_dep_dlls}
+)
 
 install_dotnet(rcldotnet_talker DESTINATION lib/${PROJECT_NAME}/dotnet)
 install_dotnet(rcldotnet_listener DESTINATION lib/${PROJECT_NAME}/dotnet)
