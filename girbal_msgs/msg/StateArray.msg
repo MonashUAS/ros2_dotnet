@@ -1,1 +1,1 @@
-int32[] states
+int32[100] states
