@@ -12,9 +12,35 @@ namespace ConsoleApplication
 { //needs to be changed right 
     public class CBSCaller
     {
+
+        private ExecutiveController executiveController;
+        private const int mapWidth = 60;
+        private const int mapHeight = 20;
+        private const int noOfAgents = 4;
+
+        private List<State> startStates = new List<State>()
+        {
+            new State() { x = 15, y = 10},
+            new State() { x = 0, y = 25},
+            new State() {x = 40, y = 25 },
+            new State() {x = 15, y = 40 }
+
+        };
+
+        private List<State> goalStates = new List<State>()
+        {
+            new State() { x = 55, y= 45},
+            new State() { x = 10, y = 8},
+            new State() { x = 20, y = 30},
+            new State() {x = 40, y = 30 }
+
+        };
+
         public static void Main(string[] args)
         {
             RCLdotnet.Init();
+
+            executiveController = new ExecutiveController(300, noOfAgents, mapWidth, mapHeight);
 
             INode node = RCLdotnet.CreateNode("listener");
 
