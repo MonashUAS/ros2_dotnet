@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(GirbalPathfinding C)
+project(girbal_pathfinding C)
 
 find_package(ament_cmake REQUIRED)
 find_package(rcldotnet REQUIRED)
