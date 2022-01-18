@@ -8,7 +8,7 @@ using ROS2;
 
 //Test
 
-namespace ConsoleApplication
+namespace GirbalPathfinding
 { //needs to be changed right 
     public class CBSCaller
     {
