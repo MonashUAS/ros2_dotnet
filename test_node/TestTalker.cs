@@ -43,9 +43,9 @@ namespace ConsoleApplication
                 Random rnd = new Random();
                 for (int i = 0; i < 5; i++)
                 {
-                    int x = rnd.Next(1000);
+                    int x = rnd.Next(60);
                     msg.States.Add(x);
-                    int y = rnd.Next(1000);
+                    int y = rnd.Next(20);
                     msg.States.Add(y);
                     int t = j;
                     msg.States.Add(t);
