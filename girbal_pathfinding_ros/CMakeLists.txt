@@ -26,12 +26,12 @@ set(_assemblies_dep_dlls
 
 message("Included assemblies: ${_assemblies_dep_dlls}")
 
-add_dotnet_executable(rcldotnet_talker_listener
-  RCLDotnetTalkerListener.cs
+add_dotnet_executable(cbs_caller
+  CBSCaller.cs
   INCLUDE_DLLS
   ${_assemblies_dep_dlls}
 )
 
-install_dotnet(rcldotnet_talker_listener DESTINATION lib/${PROJECT_NAME}/dotnet)
+install_dotnet(cbs_caller DESTINATION lib/${PROJECT_NAME}/dotnet)
 
 ament_package()
