@@ -12,8 +12,8 @@ using GirbalPathfinding;
 
 //Test
 
-namespace GirbalPathfinding
-{ //needs to be changed right 
+namespace ConsoleApplication
+{
     public class CBSCaller
     {
 
