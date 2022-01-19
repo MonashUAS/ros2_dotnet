@@ -27,7 +27,7 @@ set(_assemblies_dep_dlls
 message("Included assemblies: ${_assemblies_dep_dlls}")
 
 add_dotnet_executable(cbs_caller
-  RCLDotnetTalkerListener.cs
+  CBSCaller.cs
   INCLUDE_DLLS
   ${_assemblies_dep_dlls}
 )
