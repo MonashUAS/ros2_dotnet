@@ -28,6 +28,12 @@ message("Included assemblies: ${_assemblies_dep_dlls}")
 
 add_dotnet_executable(cbs_caller
   CBSCaller.cs
+  ConstraintNode.cs
+  Edge.cs
+  ExecutiveController.cs
+  State.cs
+  Globals.cs
+
   INCLUDE_DLLS
   ${_assemblies_dep_dlls}
 )
@@ -37,7 +43,7 @@ set(CS_SOURCES
   ExecutiveController.cs
 )
 
-add_dotnet_library(${PROJECT_NAME} ${CS_SOURCES})
+#add_dotnet_library(${PROJECT_NAME} ${CS_SOURCES})
 install_dotnet(cbs_caller DESTINATION lib/${PROJECT_NAME}/dotnet)
 
 ament_package()
