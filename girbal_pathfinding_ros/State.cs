@@ -8,7 +8,7 @@ namespace GirbalPathfinding
 {
     public class State
     {
-        public int x; 
+        public int x;
         public int y;
 
         public int time { get; set; }
@@ -105,7 +105,7 @@ namespace GirbalPathfinding
             {
                 for (int j = 0; j <= Globals.droneRadius; j++)
                 {
-                    if (staticObstacles[i,j] != 0)
+                    if (staticObstacles[i, j] != 0)
                     {
                         return true; //checks if the state is an obsticle
                     }
@@ -164,7 +164,8 @@ namespace GirbalPathfinding
 
                 return false;
 
-            } else
+            }
+            else
             {
 
                 return x == state.x && y == state.y;
@@ -182,7 +183,8 @@ namespace GirbalPathfinding
                 }
 
                 return false;
-            } else
+            }
+            else
             {
                 return x == state.x && y == state.y && time == state.time;
             }

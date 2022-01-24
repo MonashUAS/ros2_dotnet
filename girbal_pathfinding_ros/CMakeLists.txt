@@ -33,7 +33,6 @@ add_dotnet_executable(cbs_caller
   ExecutiveController.cs
   State.cs
   Globals.cs
-
   INCLUDE_DLLS
   ${_assemblies_dep_dlls}
 )

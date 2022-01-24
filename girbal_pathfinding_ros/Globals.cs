@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GirbalPathfinding
 {
-    static class Globals// global variables for accessing acrross the program
+    public static class Globals// global variables for accessing acrross the program
     {
         public static int droneRadius = 1;
         //public static List<State> goalStates = new List<State>(); //droneId: {x, y, time}
