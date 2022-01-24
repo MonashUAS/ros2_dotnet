@@ -37,6 +37,7 @@ set(CS_SOURCES
   ExecutiveController.cs
 )
 
+add_dotnet_library(${PROJECT_NAME} ${CS_SOURCES})
 install_dotnet(cbs_caller DESTINATION lib/${PROJECT_NAME}/dotnet)
 
 ament_package()
