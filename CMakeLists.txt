@@ -32,6 +32,11 @@ add_dotnet_executable(cbs_caller
   ${_assemblies_dep_dlls}
 )
 
+set(CS_SOURCES
+  State.cs
+  ExecutiveController.cs
+)
+
 install_dotnet(cbs_caller DESTINATION lib/${PROJECT_NAME}/dotnet)
 
 ament_package()
