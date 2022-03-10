@@ -11,7 +11,7 @@ using ROS2.Utils;
 
 // This Talker is intened to act as a tester as the thread network is likely not going to be completely ready  for testing*/ 
 namespace ConsoleApplication
-{ //namespace needs changing right 
+{
     public class DummyTalker
     {
         private bool start = true;
@@ -20,11 +20,16 @@ namespace ConsoleApplication
         public int mapHieght = 60;
         public int mapWidth = 50;
         Random rnd = new Random();
-        for (int i = 0; i < numDrones; i++) 
+
+        for(int i=0; i<numDrones; i++) 
             {
-                startSet[1, i] = rnd.Next(1,mapHieght);
+           startSet[1, i] = rnd.Next(1,mapHieght);
                 startSet[2, i] = rnd.Next(1,mapWidth);
             }
+            
+            
+                
+            
         public static void Main(string[] args)
         {
             RCLdotnet.Init();
@@ -41,6 +46,7 @@ namespace ConsoleApplication
                 if (start) 
                 {
                     string name = descriptor.Name;
+                //set random start states
                  }
             
             else { 
@@ -59,8 +65,8 @@ namespace ConsoleApplication
 
           // Sleep a little bit between each message
           Thread.Sleep(1000);
-      }
+            }
       
-}
+        }
     }
 }
